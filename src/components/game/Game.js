@@ -11,9 +11,15 @@ const GameWrapper = styled.div`
     grid-template-areas: "GameArea RightUI"; 
 `;
 
+const BoardWrapper = styled.div`
+    position: relative;
+`;
+
 export const Game = ({}) => (
     <GameWrapper>
-        <GameGrid/>
-        <div>RIGHT UI</div>
+        <BoardWrapper>
+            <GameGrid/>
+        </BoardWrapper>
+            <div>RIGHT UI</div>
     </GameWrapper>
 );
