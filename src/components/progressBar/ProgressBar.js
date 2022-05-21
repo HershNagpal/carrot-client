@@ -1,12 +1,12 @@
 import styled from 'styled-components';
 
-export const UnstyledProgressBar = ({maxValue, currentValue, barColor, backgroundColor}) => (
+const UnstyledProgressBar = ({maxValue, currentValue, barColor, backgroundColor}) => (
     <div>
         <Bar backgroundColor={barColor}/>
     </div>
 );
 
-const ProgressBar = styled(UnstyledProgressBar)`
+export const ProgressBar = styled(UnstyledProgressBar)`
     background-color: ${props => props.backgroundColor};
     width: 100px;
     height: 10px;

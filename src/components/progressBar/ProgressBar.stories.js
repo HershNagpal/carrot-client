@@ -1,12 +1,12 @@
-import { UnstyledProgressBar } from './ProgressBar';
+import { ProgressBar } from './ProgressBar';
 
 export default {
     title: 'Components/ProgressBar',
-    component: UnstyledProgressBar,
+    component: ProgressBar,
 };
 
 const Template = (args) => (
-    <UnstyledProgressBar {...args}/>
+    <ProgressBar {...args}/>
 );
 
 export const Default = Template.bind({});
