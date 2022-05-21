@@ -1,5 +1,14 @@
 import styled from 'styled-components';
 
+const UnstyledProgressBar = ({maxValue, currentValue, barColor, backgroundColor}) => (
+    <div>
+        <Bar backgroundColor={barColor}/>
+        <BarText>
+            {`${currentValue}/${maxValue}`}
+        </BarText>
+    </div>
+);
+
 export const ProgressBar = styled(UnstyledProgressBar)`
     background-color: ${props => props.backgroundColor};
 `;
@@ -12,13 +21,4 @@ const Bar = styled.div`
 const BarText = styled.div`
     position: relative;
     text-align: center;
-`
-
-const UnstyledProgressBar = ({maxValue, currentValue, barColor, backgroundColor}) => (
-    <div>
-        <Bar backgroundColor={barColor}/>
-        <BarText>
-            {`${currentValue}/${maxValue}`}
-        </BarText>
-    </div>
-);
+`;

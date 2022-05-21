@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { tileImageMap } from '../assets/tileImageMap';
 
-export const Tile = styled.div`
+const StyledTile = styled.div`
     font-size: 5vh;
     justify-content: center;
     color: black;
@@ -13,3 +13,8 @@ export const Tile = styled.div`
     background-image: url(${props => tileImageMap[props.backgroundImage]});
     background-size: ${props => props.backgroundSize ?? '100%'};
 `;
+
+export const Tile = (backgroundImage, backgroundSize) => (<>
+        <StyledTile backgroundImage={backgroundImage} backgroundSize={backgroundSize} />
+    </>
+    )
