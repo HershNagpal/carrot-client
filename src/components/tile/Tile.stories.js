@@ -1,11 +1,17 @@
 import { Tile } from './Tile';
+import styled from 'styled-components';
+
+const StorybookTile = styled(Tile)`
+    aspect-ratio: 1;
+    max-width: 30vw;
+`;
 
 export default {
     title: 'Components/Grid/Tile',
-    component: Tile,
+    component: StorybookTile,
 };
 
-const Template = (args) => <Tile {...args}/>;
+const Template = (args) => <StorybookTile {...args}/>;
 
 export const Grass = Template.bind({});
 Grass.args = {
@@ -52,7 +58,7 @@ PlayerDown.args = {
 export const PlayerLeft = Template.bind({});
 PlayerLeft.args = {
     backgroundSize: "90%",
-    backgroundImage: "playerleftImage",
+    backgroundImage: "playerLeftImage",
 }
 
 export const PlayerRight = Template.bind({});
