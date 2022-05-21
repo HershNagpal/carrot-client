@@ -1,7 +1,7 @@
-import {Tile} from './Tile';
+import { Tile } from './Tile';
 
 export default {
-    tile: 'Components/Tile',
+    title: 'Components/Tile',
     component: Tile,
 };
 
