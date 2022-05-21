@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
-export const TextLog = ({log}) => (
-    <TextLogWrapper>
+export const TextLog = ({ log, className }) => (
+    <TextLogWrapper className={className}>
         {
             (log ?? []).map(
                 (e) => <Text>{e}</Text>

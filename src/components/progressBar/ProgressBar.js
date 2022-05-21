@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
-export const ProgressBar = ({height, fontSize, maxValue, currentValue, barColor, backgroundColor}) => (
-    <ProgressBarWrapper height={height} backgroundColor={backgroundColor}>
+export const ProgressBar = ({gridArea, height, fontSize, maxValue, currentValue, barColor, backgroundColor}) => (
+    <ProgressBarWrapper gridArea={gridArea} height={height} backgroundColor={backgroundColor}>
         <BarText fontSize={fontSize}>{`${currentValue} / ${maxValue}`}</BarText>
         <Bar backgroundColor={barColor} maxValue={maxValue} currentValue={currentValue}/>
     </ProgressBarWrapper>
@@ -11,6 +11,9 @@ const ProgressBarWrapper = styled.div`
     position: relative;
     background-color: ${props => props.backgroundColor};
     min-height: 10px;
+    align-self: center;
+    justify: center;
+    grid-area: ${props => props.gridArea};
     height: ${props => props.height};
     border: 2px solid black;
     border-radius: 5rem;
