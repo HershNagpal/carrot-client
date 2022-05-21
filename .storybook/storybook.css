@@ -9,3 +9,8 @@
 body {
   padding: 0 !important;
 }
+
+.storybookStyles {
+  max-width: 20vw;
+  aspect-ratio: 1;
+}

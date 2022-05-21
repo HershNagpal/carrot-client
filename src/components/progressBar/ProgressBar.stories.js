@@ -1,18 +1,15 @@
-import { ProgressBar } from './ProgressBar';
+import { UnstyledProgressBar } from './ProgressBar';
 
 export default {
     title: 'Components/ProgressBar',
-    component: ProgressBar,
+    component: UnstyledProgressBar,
 };
 
 const Template = (args) => (
-    <ProgressBar {...args}/>
+    <UnstyledProgressBar {...args}/>
 );
 
 export const Default = Template.bind({});
 Default.args = {
-    maxValue: 100,
-    currentValue: 50,
-    barColor: "#FF0000",
-    backgroundColor: "#00FF00",
-}
+    backgroundcolor: "#FF0000",
+};
