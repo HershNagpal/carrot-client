@@ -2,7 +2,7 @@ import { GameGrid } from './GameGrid';
 import { defaultGameGrid } from './sampleGameGrid';
 
 export default {
-    title: 'Components/GameGrid',
+    title: 'Components/Grid/GameGrid',
     component: GameGrid,
 };
 

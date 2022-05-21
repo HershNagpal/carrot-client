@@ -1,7 +1,7 @@
 import { Tile } from './Tile';
 
 export default {
-    title: 'Components/Tile',
+    title: 'Components/Grid/Tile',
     component: Tile,
 };
 
