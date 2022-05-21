@@ -1,7 +1,7 @@
 import { Game } from './Game';
 
 export default {
-    game: 'Components/Game',
+    title: 'Components/Game',
     component: Game,
 };
 
