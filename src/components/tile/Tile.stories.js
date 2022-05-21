@@ -5,9 +5,7 @@ export default {
     component: Tile,
 };
 
-const Template = (args) => (
-    <Tile {...args}/>
-);
+const Template = (args) => <Tile {...args}/>;
 
 export const Grass = Template.bind({});
 Grass.args = {

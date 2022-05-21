@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { tileImageMap } from '../assets/tileImageMap';
 
-export const Tile = styled.div`
+const StyledTile = styled.div`
     font-size: 5vh;
     justify-content: center;
     color: black;
