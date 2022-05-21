@@ -13,9 +13,13 @@ export const TextLog = ({log}) => (
 const TextLogWrapper = styled.div`
     display: flex;
     flex-direction: column-reverse;
-    font-size: 2.5rem;
+    font-size: 1rem;
     font-family: sans-serif;
-    text-align: center;
+    line-height: 4vh;
+    height: 20vh;
+    width: 30vw;
+    -webkit-mask-image: linear-gradient(to top, black 0%, transparent 100%);
+    mask-image: linear-gradient(to top, black 0%, transparent 100%);
 `;
 
 const Text = styled.div`

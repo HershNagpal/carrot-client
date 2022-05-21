@@ -11,5 +11,5 @@ const Template = (args) => (
 
 export const Default = Template.bind({});
 Default.args = {
-    log:["Welcome to carrot wolf!", "Dogwater", "Test"],
+    log:["You advanced to level 2!","Open the inventory for more info", "You found a carrot", "Look out for wolves", "Welcome to carrot wolf!"],
 };
