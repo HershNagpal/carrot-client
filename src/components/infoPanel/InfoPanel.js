@@ -1,7 +1,7 @@
 import styled from 'styled-components';
-import { NameText } from '../nameText/NameText';
-import { TextLog } from '../textLog/TextLog';
+import { TitleText } from '../titleText/TitleText';
 import { ProgressBar } from '../progressBar/ProgressBar';
+import * as InfoPanel from './InfoPanelSubcomponents';
 
 const InfoPanelWrapper = styled.div`
     display: grid;
@@ -22,22 +22,8 @@ const InfoPanelWrapper = styled.div`
 export const InfoPanel = ({className}) => (
     <InfoPanelWrapper className={className}>
         <div/>
-        <NameText text="Player"/>
-        <ProgressBar
-            gridArea="Health"
-            currentValue={75} 
-            maxValue={100} 
-            height="50%" 
-            backgroundColor="#FF0000"
-            barColor="#00FF00"
-        />
-        <ProgressBar
-            gridArea="XP"
-            currentValue={20} 
-            maxValue={100} 
-            height="50%" 
-            backgroundColor="#FFFFFF"
-            barColor="#0000FF"
-        />
+        <InfoPanel.PlayerName/>
+        <InfoPanel.HealthBar/>
+        <InfoPanel.XPBar/>
     </InfoPanelWrapper>
 );

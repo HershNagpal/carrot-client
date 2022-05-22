@@ -1,12 +1,12 @@
-import { NameText } from './NameText';
+import { TitleText } from './TitleText';
 
 export default {
-    title: 'Components/UI/NameText',
-    component: NameText,
+    title: 'Components/UI/TitleText',
+    component: TitleText,
 };
 
 const Template = (args) => (
-    <NameText {...args}/>
+    <TitleText {...args}/>
 );
 
 export const Default = Template.bind({});
