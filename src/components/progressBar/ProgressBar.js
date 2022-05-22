@@ -12,7 +12,7 @@ const ProgressBarWrapper = styled.div`
     background-color: ${props => props.backgroundColor};
     min-height: 10px;
     align-self: center;
-    justify: center;
+    justify-self: center;
     grid-area: ${props => props.gridArea};
     height: ${props => props.height};
     border: 2px solid black;

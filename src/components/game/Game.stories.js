@@ -1,4 +1,5 @@
 import { Game } from './Game';
+import { defaultControls } from '../../constants/defaultControls';
 
 export default {
     title: 'Components/Game',
@@ -10,4 +11,12 @@ const Template = (args) => (
 );
 
 export const Default = Template.bind({});
-Default.args = {}
+Default.args = {
+    saveGame: {
+        currentMenu: 'game',
+    },
+    controls: defaultControls,
+    profile: {
+        name: 'no'
+    }
+}

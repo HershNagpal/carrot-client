@@ -3,6 +3,12 @@
 ## Game Objects
 
 ```ts
+controls = {
+    'game' | 'inventory' | 'collection' :{
+        Key: ActionCode
+    },
+}
+
 gameState = {
     board: Tile[]
     log: LogItem[]

@@ -2,6 +2,9 @@ import styled from 'styled-components';
 import { GameGrid } from '../gameGrid/GameGrid';
 import { TextLog } from '../textLog/TextLog';
 import { InfoPanel } from '../infoPanel/InfoPanel';
+import { useKeyData } from '../../hooks/keyListenerHook';
+import { useEffect, useState } from 'react';
+import { gameCommand } from '../../gameLogic/main';
 
 const GameWrapper = styled.div`
     background-color: #333333;
@@ -26,16 +29,18 @@ const StyledTextLog = styled(TextLog)`
     right: 0%;
 `;
 
-const text = [
-    "Test",
-    "Sample",
-    "Hello",
-    "World",
-]
+export const Game = ({saveGame, controls, profile}) => {
+    
+    const [game, setGame] = useState(saveGame);
+    const [keyPressed, _] = useKeyData();
 
-export const Game = ({}) => (
-    <GameWrapper>
+    useEffect(() => {
+        console.log(controls[game.currentMenu][keyPressed]);
+        setGame(gameCommand(game, controls[game.currentMenu][keyPressed]));
+    }, [keyPressed]);
+    
+    return <GameWrapper>
         <GameGrid/>
         <InfoPanel/>
     </GameWrapper>
-);
+};
