@@ -10,6 +10,7 @@ const Template = (args) => (
     <Game {...args}/>
 );
 
+
 export const Default = Template.bind({});
 Default.args = {
     saveGame: {

@@ -1,32 +1,26 @@
 import styled from 'styled-components';
 import { GameGrid } from '../gameGrid/GameGrid';
-import { TextLog } from '../textLog/TextLog';
 import { InfoPanel } from '../infoPanel/InfoPanel';
 import { useKeyData } from '../../hooks/keyListenerHook';
 import { useEffect, useState } from 'react';
 import { gameCommand } from '../../gameLogic/main';
 
+const GridWrapper = styled.div`
+    flex-grow: 3;
+`;
+
 const GameWrapper = styled.div`
     background-color: #333333;
-    display: grid;
-    padding: 0;
     height: 100vh;
-    grid-template-rows: 1fr;
-    grid-template-columns: 2fr 1fr;
-    grid-template-areas: "GameArea RightUI"; 
-`;
-
-const BoardWrapper = styled.div`
-    position: relative;
+    width: 100vw;
     display: grid;
-    width: 100%;
-    height: 100%;
-`;
-
-const StyledTextLog = styled(TextLog)`
-    position: absolute;
-    top: 0%;
-    right: 0%;
+    grid-template-columns: 1fr 90vh 1fr 30vw;
+    grid-template-rows: 1fr 90vh 1fr;
+    grid-template-areas: 
+        "sp1 sp2 sp3 infoPanel"
+        "sp1 grid sp3 infoPanel"
+        "sp1 sp4 sp3 infoPanel"
+    ; 
 `;
 
 export const Game = ({saveGame, controls, profile}) => {
@@ -40,7 +34,7 @@ export const Game = ({saveGame, controls, profile}) => {
     }, [keyPressed]);
     
     return <GameWrapper>
-        <GameGrid/>
-        <InfoPanel/>
+        <GameGrid gridArea="grid"/>
+        <InfoPanel gridArea="infoPanel"/>
     </GameWrapper>
 };

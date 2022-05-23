@@ -3,10 +3,10 @@
 }
 
 #root {
-  height: 100%;
 }
 
 body {
+  height: 100vh;
   padding: 0 !important;
 }
 
