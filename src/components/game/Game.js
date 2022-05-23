@@ -14,12 +14,12 @@ const GameWrapper = styled.div`
     height: 100vh;
     width: 100vw;
     display: grid;
-    grid-template-columns: 1fr 90vh 1fr 30vw;
+    grid-template-columns: 1fr 90vh 30vw 1fr;
     grid-template-rows: 1fr 90vh 1fr;
     grid-template-areas: 
         "sp1 sp2 sp3 sp4"
-        "sp1 grid sp3 infoPanel"
-        "sp1 sp5 sp3 2p6"
+        "sp1 grid infoPanel sp4"
+        "sp1 sp5 sp6 sp4"
     ; 
 `;
 
