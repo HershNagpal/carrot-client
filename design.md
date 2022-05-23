@@ -9,7 +9,7 @@ controls = {
     },
 }
 
-gameState = {
+game = {
     board: Tile[]
     log: LogItem[]
 
@@ -31,6 +31,7 @@ gameState = {
     maxHeldFences: number,
 
     gameOver: boolean,
+    currentMenu: 'game' | 'inventory' | 'collection '
 }
 
 Entity = {
