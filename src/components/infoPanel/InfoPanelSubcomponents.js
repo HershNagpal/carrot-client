@@ -12,7 +12,7 @@ export const HealthBar = ({}) => (
         gridArea="Health"
         currentValue={75} 
         maxValue={100} 
-        height="50%" 
+        height="55%" 
         backgroundColor="#FF0000"
         barColor="#00FF00"
     />
