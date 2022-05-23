@@ -65,7 +65,7 @@ export const PlayerName = ({}) => (
     />
 )
 
-const UnfHealthBar = ({className}) => (
+const UnstyledHealthBar = ({className}) => (
     <ProgressBar
         className={className}
         gridArea="Health"
@@ -77,11 +77,11 @@ const UnfHealthBar = ({className}) => (
     />
 )
 
-export const HealthBar = styled(UnfHealthBar)`
+export const HealthBar = styled(UnstyledHealthBar)`
     padding: 0px 20px;
 `;
 
-const UnfXPBar = ({className}) => (
+const UnstyledXPBar = ({className}) => (
     <ProgressBar
         className={className}
         gridArea="XP"
@@ -93,7 +93,7 @@ const UnfXPBar = ({className}) => (
     />
 )
 
-export const XPBar = styled(UnfXPBar)`
+export const XPBar = styled(UnstyledXPBar)`
     padding: 0px 20px;
 `;
 

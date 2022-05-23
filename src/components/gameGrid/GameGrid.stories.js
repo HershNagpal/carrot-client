@@ -11,6 +11,4 @@ const Template = (args) => (
 );
 
 export const Default = Template.bind({});
-Default.args = {
-    gameGridState: defaultGameGrid,
-}
+Default.args = {}

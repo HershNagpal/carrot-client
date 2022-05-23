@@ -1,10 +1,18 @@
 import styled from 'styled-components';
+import React from 'react';
+import { openInventory } from '../../gameLogic/gameContext/actions';
+import { GameContext } from '../../gameLogic/gameContext';
 
-export const TitleText = ({gridArea, text}) => (
-    <TitleTextWrapper gridArea={gridArea}>
-        {text}
-    </TitleTextWrapper>
-);
+export const TitleText = ({gridArea, text}) => {
+
+    const [_, dispatch] = React.useContext(GameContext);
+
+    return (
+        <TitleTextWrapper gridArea={gridArea} onClick={() => dispatch(openInventory())}>
+            {text}
+        </TitleTextWrapper>
+    )
+};
 
 const TitleTextWrapper = styled.div`
     font-size: 2.5rem;

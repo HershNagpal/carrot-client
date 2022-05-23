@@ -4,7 +4,7 @@ export const TextLog = ({gridArea, log, className }) => (
     <TextLogWrapper gridArea={gridArea} className={className}>
         {
             (log ?? []).map(
-                (e) => <Text>{e}</Text>
+                (e,i) => <Text key={`text-${i}`}>{e}</Text>
             )
         }
     </TextLogWrapper>
