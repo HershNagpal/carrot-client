@@ -1,26 +1,34 @@
 import styled from 'styled-components';
 
 export const ProgressBar = ({className, gridArea, height, fontSize, maxValue, currentValue, barColor, backgroundColor}) => (
-    <ProgressBarWrapper className={className} gridArea={gridArea} height={height} backgroundColor={backgroundColor}>
-        <BarText fontSize={fontSize}>{`${currentValue} / ${maxValue}`}</BarText>
-        <Bar backgroundColor={barColor} maxValue={maxValue} currentValue={currentValue}/>
-    </ProgressBarWrapper>
+    <BarContainer className={className} gridArea={gridArea}>
+        <OuterBar height={height} backgroundColor={backgroundColor}>
+            <BarText fontSize={fontSize}>{`${currentValue} / ${maxValue}`}</BarText>
+            <InnerBar backgroundColor={barColor} maxValue={maxValue} currentValue={currentValue}/>
+        </OuterBar>
+    </BarContainer>
 );
 
-const ProgressBarWrapper = styled.div`
+const BarContainer = styled.div`
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    grid-area: ${props => props.gridArea};
+`;
+
+const OuterBar = styled.div`
     position: relative;
     background-color: ${props => props.backgroundColor};
     min-height: 10px;
     align-self: center;
     justify-self: center;
-    grid-area: ${props => props.gridArea};
     height: ${props => props.height};
     border: 2px solid black;
     border-radius: 5rem;
     width: 100%;
 `;
 
-const Bar = styled.div`
+const InnerBar = styled.div`
     background-color: ${props => props.backgroundColor};
     width: ${props => (
         (

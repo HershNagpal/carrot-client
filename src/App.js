@@ -1,6 +1,7 @@
+import { Game } from "./components/game/Game";
+
 const App = () => (
-    <div>
-    </div>
+    <Game/>
 );
 
 export default App;

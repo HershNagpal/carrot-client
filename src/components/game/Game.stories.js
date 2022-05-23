@@ -12,12 +12,4 @@ const Template = (args) => (
 
 
 export const Default = Template.bind({});
-Default.args = {
-    saveGame: {
-        currentMenu: 'game',
-    },
-    controls: defaultControls,
-    profile: {
-        name: 'no'
-    }
-}
+Default.args = {}
