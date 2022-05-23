@@ -1,11 +1,8 @@
 import styled from 'styled-components';
-import { TitleText } from '../titleText/TitleText';
-import { ProgressBar } from '../progressBar/ProgressBar';
-import { PlayerName, HealthBar, XPBar } from './InfoPanelSubcomponents';
+import { PlayerName, HealthBar, XPBar, Log } from './InfoPanelSubcomponents';
 
 const InfoPanelWrapper = styled.div`
     display: grid;
-    height: 100vh;
     grid-template-rows: 1fr 1fr 1fr 2fr 2fr 4fr;
     grid-template-columns: 1fr 1fr 1fr;
     grid-template-areas: 
@@ -14,7 +11,8 @@ const InfoPanelWrapper = styled.div`
         "XP XP XP"
         "Irow1 Irow1 Irow1"
         "Irow2 Irow2 Irow2"
-    ; 
+        "Log Log Log"
+    ;
     grid-area: ${props => props.gridArea};
 `;
 
@@ -24,5 +22,6 @@ export const InfoPanel = ({gridArea, className}) => (
         <PlayerName/>
         <HealthBar/>
         <XPBar/>
+        <Log log={["Dog", "Water", "MMMM", "Hersh is a sussy baka", "Watercan", "Watercan2", "Watercan3", "Watercan", "Watercan"]}/>
     </InfoPanelWrapper>
 );

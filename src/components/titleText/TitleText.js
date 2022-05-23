@@ -9,5 +9,6 @@ export const TitleText = ({gridArea, text}) => (
 const TitleTextWrapper = styled.div`
     font-size: 2.5rem;
     font-family: sans-serif;
+    color: white;
     grid-area: ${props => props.gridArea};
 `;

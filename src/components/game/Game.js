@@ -17,9 +17,9 @@ const GameWrapper = styled.div`
     grid-template-columns: 1fr 90vh 1fr 30vw;
     grid-template-rows: 1fr 90vh 1fr;
     grid-template-areas: 
-        "sp1 sp2 sp3 infoPanel"
+        "sp1 sp2 sp3 sp4"
         "sp1 grid sp3 infoPanel"
-        "sp1 sp4 sp3 infoPanel"
+        "sp1 sp5 sp3 2p6"
     ; 
 `;
 

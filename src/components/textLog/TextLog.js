@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
-export const TextLog = ({ log, className }) => (
-    <TextLogWrapper className={className}>
+export const TextLog = ({gridArea, log, className }) => (
+    <TextLogWrapper gridArea={gridArea} className={className}>
         {
             (log ?? []).map(
                 (e) => <Text>{e}</Text>
@@ -13,11 +13,11 @@ export const TextLog = ({ log, className }) => (
 const TextLogWrapper = styled.div`
     display: flex;
     flex-direction: column-reverse;
-    font-size: 1rem;
+    grid-area: ${props => props.gridArea};
+    font-size: 1.5rem;
+    color: white;
     font-family: sans-serif;
-    line-height: 4vh;
-    height: 20vh;
-    width: 30vw;
+    line-height: 2rem;
     -webkit-mask-image: linear-gradient(to top, black 0%, transparent 100%);
     mask-image: linear-gradient(to top, black 0%, transparent 100%);
 `;
