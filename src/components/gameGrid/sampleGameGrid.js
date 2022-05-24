@@ -4,7 +4,9 @@ const numTiles = numColumns * numRows;
 
 export const defaultGameGrid = Array(numTiles).fill(0).map(
     (_, i) => ({
-        backgroundImage: "grassImage",
-        coordinates: [Math.floor(i/numColumns), i%numRows]
+        terrain: "grass",
+        coordinates: [Math.floor(i/numColumns), i%numRows],
+        itemId: -1,
+        entityId: -1,
     })
 );

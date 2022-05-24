@@ -1,4 +1,4 @@
-import { setCurrentMenu, move } from './gameFunctions';
+import { setCurrentMenu, move, consumeSuperCarrot, attack } from './gameFunctions';
 
 export const reducer = (game, action) => {
     switch (action.type) {
@@ -14,6 +14,18 @@ export const reducer = (game, action) => {
             return move(game, action);
         case 'moveRight':  
             return move(game, action);
+        case 'consumeSuperCarrot':
+            return consumeSuperCarrot(game);
+        case 'openMenu':
+            return setCurrentMenu(game, 'menu');
+        case 'openCollection':
+            return setCurrentMenu(game, 'collection');      
+        case 'openInventory':
+            return setCurrentMenu(game, 'inventory');    
+        case 'closeMenu':
+            return setCurrentMenu(game, 'game');    
+        case 'attack':
+            return attack(game);  
         default:
             throw new Error('Invalid Action Type: ' + action);
     }

@@ -6,7 +6,7 @@ const StorybookInfoPanel = styled(InfoPanel)`
 `;
 
 export default {
-    title: 'Components/InfoPanel',
+    title: 'Components/UI/InfoPanel',
     component: StorybookInfoPanel,
 };
 

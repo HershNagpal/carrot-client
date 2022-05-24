@@ -10,6 +10,6 @@ export const Tile = styled.div`
     background-color: lightgreen;
     background-repeat: no-repeat;
     background-position: center;
-    background-image: url(${props => tileImageMap[props.backgroundImage]});
+    background-image: url(${props => tileImageMap[props.terrain]});
     background-size: ${props => props.backgroundSize ?? '100%'};
 `;

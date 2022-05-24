@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import React from 'react';
-import { openInventory } from '../../gameLogic/gameContext/actions';
-import { GameContext } from '../../gameLogic/gameContext';
+import { openInventory } from '../../gameContext/actions';
+import { GameContext } from '../../gameContext';
 
 export const TitleText = ({gridArea, text}) => {
 

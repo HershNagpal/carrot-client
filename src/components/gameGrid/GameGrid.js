@@ -1,6 +1,6 @@
 import { Tile } from '../tile/Tile';
 import React from 'react';
-import { GameContext } from '../../gameLogic/gameContext';
+import { GameContext } from '../../gameContext';
 import styled from 'styled-components';
 import { defaultGameGrid } from './sampleGameGrid';
 
@@ -20,7 +20,7 @@ export const GameGrid = ({gridArea}) => {
         <GridWrapper gridArea={gridArea}>
             {
                 relevantGameState.map(
-                    (e,i) => <Tile backgroundImage={e.backgroundImage} key={`tile-${i}`}/>
+                    (e,i) => <Tile terrain={e.terrain} key={`tile-${i}`}/>
                 )
             }
         </GridWrapper>

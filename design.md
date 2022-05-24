@@ -45,6 +45,7 @@ Entity = {
 
 Tile = {
     terrain: 'grass' | 'water' | 'mountain' 
+    itemId: number | -1
     entityId: number | -1
     coordinates: {x: number, y: number}
 }

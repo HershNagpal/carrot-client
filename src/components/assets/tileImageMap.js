@@ -9,13 +9,13 @@ import playerLeftImage from '../assets/playerLeft.png';
 import playerRightImage from '../assets/playerRight.png';
 
 export const tileImageMap = {
-    grassImage: grassImage,
-    carrotImage: carrotImage,
-    wolfImage: wolfImage,
-    treeImage: treeImage,
-    fenceImage: fenceImage,
-    playerUpImage: playerUpImage,
-    playerDownImage: playerDownImage,
-    playerLeftImage: playerLeftImage,
-    playerRightImage: playerRightImage,
+    grass: grassImage,
+    carrot: carrotImage,
+    wolf: wolfImage,
+    tree: treeImage,
+    fence: fenceImage,
+    playerUp: playerUpImage,
+    playerDown: playerDownImage,
+    playerLeft: playerLeftImage,
+    playerRight: playerRightImage,
 }

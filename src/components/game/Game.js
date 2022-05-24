@@ -1,9 +1,11 @@
 import styled from 'styled-components';
-import { GameContext } from '../../gameLogic/gameContext';
-import { reducer } from '../../gameLogic/gameContext/gameReducer';
+import { GameContext } from '../../gameContext';
+import { reducer } from '../../gameContext/gameReducer';
 import { GameGrid } from '../gameGrid/GameGrid';
 import { InfoPanel } from '../infoPanel/InfoPanel';
-import { defaultGameState } from '../../gameLogic/gameContext/defaultGameState';
+import { defaultGameState } from '../../gameContext/defaultGameState';
+import { handleKeyPress } from '../../gameContext/keyHandler';
+import { useKeyData } from '../../hooks/keyListenerHook';
 import React from 'react';
 
 const GridWrapper = styled.div`
@@ -29,20 +31,19 @@ export const Game = ({}) => {
     const innerContext = React.useReducer(reducer, defaultGameState);
     const [gameContextState, dispatch] = innerContext;
     
-    const [keyPressed, _] = useKeyData();
+    const [keyPressed, setKeyPressed] = useKeyData();
 
-    useEffect(() => {
-        
+    React.useEffect(() => {
+        handleKeyPress(gameContextState, dispatch, keyPressed);
     }, [keyPressed]);
 
-    const handleKeyPress = () => {
-        
-    };
+    React.useEffect(() => {
+        setKeyPressed('');
+    }, [gameContextState]);
 
     return (
         <GameContext.Provider value={innerContext}>
             <GameWrapper>
-                {console.log(gameContextState)}
                 <GameGrid gridArea="grid"/>
                 <InfoPanel gridArea="infoPanel"/>
             </GameWrapper>

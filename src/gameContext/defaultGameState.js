@@ -4,15 +4,16 @@ export const defaultNumTiles = defaultNumColumns * defaultNumRows;
 
 export const defaultGameState = {
     currentMenu: "game",
-
     board: Array(defaultNumTiles).fill(0).map(
         (_, i) => ({
             terrain: "grass",
             coordinates: {x: Math.floor(i/defaultNumColumns), y: i%defaultNumRows},
             entityId: -1,
+            itemId: -1,
         })
     ),
-
+    entities: [
+    ],
     keyBindings: {
         'game': {
             'w': 'moveUp',
@@ -21,8 +22,8 @@ export const defaultGameState = {
             'd': 'moveRight',
             'i': 'openInventory',
             'escape': 'closeMenu',
-            'space': 'attack',
-            'c': 'useSuperCarrot',
+            ' ': 'attack',
+            'c': 'consumeSuperCarrot',
             'o': 'openCollection',
         },
         'inventory': {
@@ -35,5 +36,5 @@ export const defaultGameState = {
             'o': 'closeMenu',
             'i': 'openInventory',
         }
-    }
+    },
 };

@@ -1,7 +1,7 @@
 import { ItemBubble } from './ItemBubble';
 
 export default {
-    title: 'Components/ItemBubble',
+    title: 'Components/UI/ItemBubble',
     component: ItemBubble,
 };
 

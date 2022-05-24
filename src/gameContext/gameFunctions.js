@@ -6,9 +6,21 @@ export const setCurrentMenu = (game, menu) => ({
 });
 
 export const move = (game, entityId, direction) => {
-    const beginningTileCoordinates = getTileByEntityId(game, entityId).coordinates;
-    
+    const beginningTileCoordinates = getTileByEntityId(game, entityId)?.coordinates ?? false;
+    if (beginningTileCoordinates){}
+    return game;
 };
+
+export const consumeSuperCarrot = (game) => {
+    console.log("You ate the super carrot!");
+    return game;
+};
+
+export const attack = (game) => {
+    console.log("You attacked!");
+    return game;
+};
+
 
 const placeEntityOnBoard = (game, entityId, coordinates) => ({
     ...game, 
@@ -26,7 +38,7 @@ const addEntityToEntityList = (game, entity) => (
     {
         ...game,
         entities: [
-            ...entities,
+            ...game.entities,
             entity,
         ],
     }
@@ -57,6 +69,7 @@ const getEntityById = (game, entityId) => (
         entity.id === entityId
     ))
 );
+
 
 const compareCoordinates = (coordinates1, coordinates2) => (
     coordinates1.x === coordinates2.x && coordinates1.y === coordinates2.y
