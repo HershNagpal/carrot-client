@@ -3,14 +3,9 @@
 ## Game Objects
 
 ```ts
-controls = {
-    'game' | 'inventory' | 'collection' :{
-        Key: ActionCode
-    },
-}
-
 game = {
     board: Tile[]
+    entities: Entity[]
     log: LogItem[]
 
     moves: number
@@ -32,6 +27,12 @@ game = {
 
     gameOver: boolean,
     currentMenu: 'game' | 'inventory' | 'collection '
+
+    keyBindings = {
+    'game' | 'inventory' | 'collection' : {
+        Key: ActionCode
+    },
+}
 }
 
 Entity = {
@@ -44,7 +45,8 @@ Entity = {
 
 Tile = {
     terrain: 'grass' | 'water' | 'mountain' 
-    entityId: string
+    entityId: number | -1
+    coordinates: {x: number, y: number}
 }
 
 Item = {

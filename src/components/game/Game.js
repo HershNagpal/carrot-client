@@ -28,16 +28,16 @@ export const Game = ({}) => {
     
     const innerContext = React.useReducer(reducer, defaultGameState);
     const [gameContextState, dispatch] = innerContext;
-
-    /*
-    const [game, setGame] = useState(saveGame);
+    
     const [keyPressed, _] = useKeyData();
 
     useEffect(() => {
-        console.log(controls[game.currentMenu][keyPressed]);
-        setGame(gameCommand(game, controls[game.currentMenu][keyPressed]));
+        
     }, [keyPressed]);
-    */
+
+    const handleKeyPress = () => {
+        
+    };
 
     return (
         <GameContext.Provider value={innerContext}>
