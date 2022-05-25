@@ -1,13 +1,18 @@
 import styled from 'styled-components';
 
-export const ProgressBar = ({className, gridArea, height, fontSize, maxValue, currentValue, barColor, backgroundColor}) => (
-    <BarContainer className={className} gridArea={gridArea}>
-        <OuterBar height={height} backgroundColor={backgroundColor}>
-            <BarText fontSize={fontSize}>{`${currentValue} / ${maxValue}`}</BarText>
-            <InnerBar backgroundColor={barColor} maxValue={maxValue} currentValue={currentValue}/>
-        </OuterBar>
-    </BarContainer>
-);
+export const ProgressBar = ({className, gridArea, height, fontSize, maxValue, currentValue, barColor, backgroundColor}) => {
+
+    
+
+    return (
+        <BarContainer className={className} gridArea={gridArea}>
+            <OuterBar height={height} backgroundColor={backgroundColor}>
+                <BarText fontSize={fontSize}>{`${currentValue} / ${maxValue}`}</BarText>
+                <InnerBar backgroundColor={barColor} maxValue={maxValue} currentValue={currentValue}/>
+            </OuterBar>
+        </BarContainer>
+    )
+};
 
 const BarContainer = styled.div`
     display: flex;
