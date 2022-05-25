@@ -1,5 +1,8 @@
 import styled from 'styled-components';
+import React from 'react';
+import { GameContext } from '../../gameContext';
 import { PlayerName, HealthBar, XPBar, Log, Item1, Item2, Item3, Item4, Item5, Item6} from './InfoPanelSubcomponents';
+import { getEntityById } from '../../gameContext/gameHelperFunctions';
 
 const InfoPanelWrapper = styled.div`
     display: grid;
@@ -17,18 +20,28 @@ const InfoPanelWrapper = styled.div`
     grid-area: ${props => props.gridArea};
 `;
 
-export const InfoPanel = ({gridArea, className}) => (
-    <InfoPanelWrapper gridArea={gridArea} className={className}>
-        <div/>
-        <PlayerName/>
-        <HealthBar/>
-        <XPBar/>
-        <Item1/>
-        <Item2/>
-        <Item3/>
-        <Item4/>
-        <Item5/>
-        <Item6/>
-        <Log log={["Dog", "Water", "MMMM", "Hersh is a sussy baka", "Watercan", "Watercan2", "Watercan3", "Watercan", "Watercan"]}/>
-    </InfoPanelWrapper>
-);
+
+
+export const InfoPanel = ({gridArea, className}) => {
+    const [gameContextState, dispatch] = React.useContext(GameContext);
+    
+    const player = (gameContextState ?? false) 
+        ? (getEntityById(gameContextState, 1) ?? false)
+        : false
+
+    return (
+        <InfoPanelWrapper gridArea={gridArea} className={className}>
+            <div/>
+            <PlayerName/>
+            <HealthBar currentValue={player.currentHp} maxValue={player.maxHp}/>
+            <XPBar currentValue={player.currentXp} maxValue={player.maxXp}/>
+            <Item1/>
+            <Item2/>
+            <Item3/>
+            <Item4/>
+            <Item5/>
+            <Item6/>
+            <Log log={["Dog", "Water", "MMMM", "Hersh is a sussy baka", "Watercan", "Watercan2", "Watercan3", "Watercan", "Watercan"]}/>
+        </InfoPanelWrapper>
+    )
+};

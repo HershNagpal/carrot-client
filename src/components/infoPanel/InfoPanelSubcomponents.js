@@ -65,12 +65,12 @@ export const PlayerName = ({}) => (
     />
 )
 
-const UnstyledHealthBar = ({className}) => (
+const UnstyledHealthBar = ({className, currentValue, maxValue}) => (
     <ProgressBar
         className={className}
         gridArea="Health"
-        currentValue={75} 
-        maxValue={100} 
+        currentValue={currentValue} 
+        maxValue={maxValue} 
         height="70%" 
         backgroundColor="#FF0000"
         barColor="#00FF00"
@@ -81,12 +81,12 @@ export const HealthBar = styled(UnstyledHealthBar)`
     padding: 0px 20px;
 `;
 
-const UnstyledXPBar = ({className}) => (
+const UnstyledXPBar = ({className, currentValue, maxValue}) => (
     <ProgressBar
         className={className}
         gridArea="XP"
-        currentValue={20} 
-        maxValue={100} 
+        currentValue={currentValue} 
+        maxValue={maxValue} 
         height="50%" 
         backgroundColor="#FFFFFF"
         barColor="#0000FF"

@@ -41,6 +41,9 @@ Entity = {
     direction: 'up' | 'down' | 'left' | 'right'
     maxHp: number
     currentHp: number
+    currentLvl: number | 1
+    currentXp: number | 0
+    maxXp: number | 10
 }
 
 Tile = {

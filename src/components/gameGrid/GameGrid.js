@@ -20,7 +20,7 @@ export const GameGrid = ({gridArea}) => {
         <GridWrapper gridArea={gridArea}>
             {
                 relevantGameState.map(
-                    (e,i) => <Tile terrain={e.terrain} key={`tile-${i}`}/>
+                    (e,i) => <Tile terrain={e.terrain} backgroundSize="100%" key={`tile-${i}`}/>
                 )
             }
         </GridWrapper>

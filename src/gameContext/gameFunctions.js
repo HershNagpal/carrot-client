@@ -1,4 +1,4 @@
-import { defaultGameState } from "./defaultGameState";
+import { compareCoordinates, getEntityById, getEntityByType, getTileByEntityId } from "./gameHelperFunctions";
 
 export const setCurrentMenu = (game, menu) => ({
     ...game,
@@ -52,28 +52,6 @@ const spawnEntity = (game, entity, coordinates) => (
     )
 );
 
-const getTileByEntityId = (game, entityId) => (
-    game.board.find((tile) => (
-        tile.entityId === entityId
-    ))
-);
-
-const getEntityByType = (game, entityType) => (
-    game.entities.filter((entity) => (
-        entity.type === entityType
-    ))
-);
-
-const getEntityById = (game, entityId) => (
-    game.entities.find((entity) => (
-        entity.id === entityId
-    ))
-);
-
-
-const compareCoordinates = (coordinates1, coordinates2) => (
-    coordinates1.x === coordinates2.x && coordinates1.y === coordinates2.y
-);
 
 export const newCoordInDirection = (coordinates, direction) => {
     const {x, y} = coordinates;
