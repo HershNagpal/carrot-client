@@ -1,3 +1,5 @@
+import { defaultNumColumns, defaultNumRows } from "./defaultGameState";
+
 export const getTileByEntityId = (game, entityId) => (
     game.board.find((tile) => (
         tile.entityId === entityId
@@ -18,4 +20,11 @@ export const getEntityById = (game, entityId) => (
 
 export const compareCoordinates = (coordinates1, coordinates2) => (
     coordinates1.x === coordinates2.x && coordinates1.y === coordinates2.y
+);
+
+export const checkCoordsInBounds = (coordinates) => (
+    coordinates.x <= defaultNumColumns - 1 
+    && coordinates.x >= 0 
+    && coordinates.y <= defaultNumRows - 1 
+    && coordinates.y >= 0
 );

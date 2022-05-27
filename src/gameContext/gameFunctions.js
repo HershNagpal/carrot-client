@@ -1,5 +1,5 @@
 import { action } from "@storybook/addon-actions";
-import { compareCoordinates, getEntityById, getEntityByType, getTileByEntityId } from "./gameHelperFunctions";
+import { compareCoordinates, getEntityById, getEntityByType, getTileByEntityId, checkCoordsInBounds } from "./gameHelperFunctions";
 
 export const setCurrentMenu = (game, menu) => ({
     ...game,
@@ -9,7 +9,9 @@ export const setCurrentMenu = (game, menu) => ({
 export const move = (game, entityId, action) => {
     const movingEntity = getTileByEntityId(game, entityId);
     const beginningTileCoordinates = movingEntity?.coordinates ?? false;
-    if (beginningTileCoordinates) {
+    const newLocation = newCoordInDirection(beginningTileCoordinates, action.type);
+
+    if (beginningTileCoordinates && checkCoordsInBounds(newLocation)) {
         /* Check if we are moving the player */
         const rotatedPlayerGameState = entityId === 1
             ? setEntityDirection(game, entityId, action.type.substring(4).toLowerCase())
@@ -17,10 +19,7 @@ export const move = (game, entityId, action) => {
         return placeEntityOnBoard(
             placeEntityOnBoard(rotatedPlayerGameState, -1, beginningTileCoordinates),
             entityId, 
-            newCoordInDirection(
-                beginningTileCoordinates,
-                action.type,
-            ),
+            newLocation,
         );
     }
     return game;
