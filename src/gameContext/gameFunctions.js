@@ -101,3 +101,24 @@ export const newCoordInDirection = (coordinates, direction) => {
             throw new Error('Invalid Move Direction: ' + direction);
     }
 };
+
+
+export const setHp = (game, entityId, hp) => (
+    game.entities.map((entity) => (
+        entity.id === entityId
+            ? {...entity, currentHp: hp}
+            : entity
+    ))
+);
+
+export const killEntity = (game, entityId) => ({
+    ...game, 
+    entities: game.entities.filter((entity) => (
+        entity.id !== entityId
+    )),
+    board: game.board.map((tile) => (
+        tile.entityId === entityId
+            ? {...tile, entityId: -1}
+            : tile
+    )),
+});
