@@ -1,4 +1,4 @@
-import { setCurrentMenu, move, consumeSuperCarrot, attack } from './gameFunctions';
+import { setCurrentMenu, move, consumeSuperCarrot, attack, turnPlayer } from './gameFunctions';
 
 export const reducer = (game, action) => {
     switch (action.type) {
@@ -7,13 +7,15 @@ export const reducer = (game, action) => {
         case 'openInventory':
             return setCurrentMenu(game, 'inventory');
         case 'moveUp':
-            return move(game, action);
         case 'moveDown':
-            return move(game, action);
         case 'moveLeft':
-            return move(game, action);
         case 'moveRight':  
-            return move(game, action);
+            return move(game, 1, action);
+        case 'turnUp':
+        case 'turnDown':
+        case 'turnLeft':
+        case 'turnRight':  
+            return turnPlayer(game, action);
         case 'consumeSuperCarrot':
             return consumeSuperCarrot(game);
         case 'openMenu':

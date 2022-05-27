@@ -1,3 +1,4 @@
+import { action } from "@storybook/addon-actions";
 import { compareCoordinates, getEntityById, getEntityByType, getTileByEntityId } from "./gameHelperFunctions";
 
 export const setCurrentMenu = (game, menu) => ({
@@ -5,11 +6,43 @@ export const setCurrentMenu = (game, menu) => ({
     currentMenu: menu,
 });
 
-export const move = (game, entityId, direction) => {
-    const beginningTileCoordinates = getTileByEntityId(game, entityId)?.coordinates ?? false;
-    if (beginningTileCoordinates){}
+export const move = (game, entityId, action) => {
+    const movingEntity = getTileByEntityId(game, entityId);
+    const beginningTileCoordinates = movingEntity?.coordinates ?? false;
+    if (beginningTileCoordinates) {
+        /* Check if we are moving the player */
+        const rotatedPlayerGameState = entityId === 1
+            ? setEntityDirection(game, entityId, action.type.substring(4).toLowerCase())
+            : game;
+        return placeEntityOnBoard(
+            placeEntityOnBoard(rotatedPlayerGameState, -1, beginningTileCoordinates),
+            entityId, 
+            newCoordInDirection(
+                beginningTileCoordinates,
+                action.type,
+            ),
+        );
+    }
     return game;
 };
+
+export const turnPlayer = (game, action) => (
+    setEntityDirection(game, 1, action.type.substring(4).toLowerCase())
+);
+
+const setEntityDirection = (game, entityId, direction) => ({
+    ...game, 
+    entities: [
+        ...game.entities.map(
+            (e) => e.id === entityId
+            ? {
+                ...e,
+                direction: direction,
+            }
+            : e
+        )
+    ]
+});
 
 export const consumeSuperCarrot = (game) => {
     console.log("You ate the super carrot!");
