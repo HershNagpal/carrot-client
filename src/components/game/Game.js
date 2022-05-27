@@ -35,12 +35,10 @@ export const Game = ({}) => {
 
     React.useEffect(() => {
         handleKeyPress(gameContextState, dispatch, keyPressed);
-        console.log(keyPressed);
     }, [keyPressed]);
 
     React.useEffect(() => {
         setKeyPressed('');
-        console.log(gameContextState);
     }, [gameContextState]);
 
     return (
