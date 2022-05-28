@@ -11,10 +11,6 @@ game = {
     moves: number
     totalCarrots: number
 
-    currentXp: number
-    maxXp: number
-    level: number
-
     weaponId: string
     pocketId: string
     superCarrotId: string
