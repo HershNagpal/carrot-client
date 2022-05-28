@@ -1,4 +1,9 @@
 
+export const initializeGame = () => ({
+    type: "initializeGame",
+    parameters: {},
+})
+
 export const moveUp = () => ({
     type: "moveUp",
     parameters: {},
@@ -64,18 +69,65 @@ export const openCollection = () => ({
     parameters: {},
 });
 
-export const actionNameMap = {
-    'moveUp': moveUp(),
-    'moveDown': moveDown(),
-    'moveLeft': moveLeft(),
-    'moveRight': moveRight(),
-    'turnUp': turnUp(),
-    'turnDown': turnDown(),
-    'turnLeft': turnLeft(),
-    'turnRight': turnRight(),
-    'openInventory': openInventory(),
-    'closeMenu': closeMenu(),
-    'attack': attack(),
-    'consumeSuperCarrot': consumeSuperCarrot(),
-    'openCollection': openCollection(),
+export const validActionNames = [
+    'moveUp', 
+    'moveDown', 
+    'moveLeft', 
+    'moveRight', 
+    'turnUp', 
+    'turnDown', 
+    'turnLeft', 
+    'turnRight', 
+    'openInventory', 
+    'closeMenu', 
+    'attack', 
+    'consumeSuperCarrot', 
+    'openCollection', 
+];
+
+export const dispatchActionNameMap = (actionName, dispatch) => {
+    console.log("Action Map:" + actionName)
+    switch (actionName) {
+        case 'moveUp':
+            dispatch(moveUp());
+            break;
+        case 'moveDown':
+            dispatch(moveDown());
+            break;
+        case 'moveLeft': 
+            dispatch(moveLeft());
+            break;
+        case 'moveRight': 
+            dispatch(moveRight());
+            break;
+        case 'turnUp': 
+            dispatch(turnUp());
+            break;
+        case 'turnDown': 
+            dispatch(turnDown());
+            break;
+        case 'turnLeft': 
+            dispatch(turnLeft());
+            break;
+        case 'turnRight': 
+            dispatch(turnRight());
+            break;
+        case 'openInventory': 
+            dispatch(openInventory());
+            break;
+        case 'closeMenu': 
+            dispatch(closeMenu());
+            break;
+        case 'attack': 
+            dispatch(attack());
+            break;
+        case 'consumeSuperCarrot': 
+            dispatch(consumeSuperCarrot());
+            break;
+        case 'openCollection': 
+            dispatch(openCollection());
+            break;
+        default:
+            break;
+    }
 };

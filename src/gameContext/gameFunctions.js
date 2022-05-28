@@ -1,6 +1,10 @@
 import { compareCoordinates, getEntityById, getEntityByType, getTileByCoordinates, getTileByEntityId, checkCoordsInBounds, randomCarrotOfRiddlesText } from "./gameHelperFunctions";
 import { action } from "@storybook/addon-actions";
 
+export const initializeGame = (game) => ({
+
+})
+
 export const setCurrentMenu = (game, menu) => ({
     ...game,
     currentMenu: menu,
@@ -25,13 +29,15 @@ export const move = (game, entityId, action) => {
     return game;
 };
 
-export const consumeSuperCarrot = (game) => (
-    {
-        1: carrotOfRiddles(),
-        undefined: game,
-        '-1': game,
-    }[game.superCarrotId]
-);
+export const consumeSuperCarrot = (game) => {
+    switch (game.superCarrotId) {
+        case 1:
+            return carrotOfRiddles(game);
+        default:
+            return game;
+    }
+};
+
 export const turnPlayer = (game, action) => (
     setEntityDirection(game, 1, action.type.substring(4).toLowerCase())
 );
