@@ -92,7 +92,6 @@ const spawnEntity = (game, entity, coordinates) => (
     )
 );
 
-
 export const newCoordInDirection = (coordinates, direction) => {
     const {x, y} = coordinates;
     switch (direction) {
@@ -108,7 +107,6 @@ export const newCoordInDirection = (coordinates, direction) => {
             throw new Error('Invalid Move Direction: ' + direction);
     }
 };
-
 
 export const setHp = (game, entityId, hp) => (
     game.entities.map((entity) => (
@@ -148,5 +146,8 @@ export const placeFence = (game, coordsToPlace) => {
 
 const carrotOfRiddles = (game) => {
     console.log(randomCarrotOfRiddlesText());
-    return game;
-}
+    return {
+        ...game,
+        superCarrotId: 0,
+    };
+};
