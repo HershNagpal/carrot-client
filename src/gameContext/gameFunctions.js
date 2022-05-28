@@ -1,4 +1,4 @@
-import { compareCoordinates, getEntityById, getEntityByType, getTileByEntityId } from "./gameHelperFunctions";
+import { compareCoordinates, getEntityById, getEntityByType, getTileByEntityId, randomCarrotOfRiddlesText } from "./gameHelperFunctions";
 
 export const setCurrentMenu = (game, menu) => ({
     ...game,
@@ -11,10 +11,13 @@ export const move = (game, entityId, direction) => {
     return game;
 };
 
-export const consumeSuperCarrot = (game) => {
-    console.log("You ate the super carrot!");
-    return game;
-};
+export const consumeSuperCarrot = (game) => (
+    {
+        1: carrotOfRiddles(),
+        undefined: game,
+        '-1': game,
+    }[game.superCarrotId]
+);
 
 export const attack = (game) => {
     console.log("You attacked!");
@@ -89,3 +92,24 @@ export const killEntity = (game, entityId) => ({
             : tile
     )),
 });
+
+export const placeFence = (game, coordsToPlace) => {
+    const canPlaceFence = () => {
+        const tileToPlace = getTileByCoordinates(coordsToPlace);
+        return (tileToPlace.terrain === 'grass' && tileToPlace.entityId === -1) 
+            ?   true
+            :   false
+    };
+    const fence = {
+        entityId: game.entities.length + 1,
+        type: 'fence',
+        maxHp: 3,
+        currentHp: 3,
+    };
+    return canPlaceFence ? spawnEntity(game, fence, coordsToPlace) : game;
+};
+
+const carrotOfRiddles = (game) => {
+    console.log(randomCarrotOfRiddlesText());
+    return game;
+}
