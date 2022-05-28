@@ -1,9 +1,26 @@
+import { number } from "prop-types";
+
 export const defaultNumColumns = 15;
 export const defaultNumRows = 15;
 export const defaultNumTiles = defaultNumColumns * defaultNumRows;
 
 export const defaultGameState = {
-    currentMenu: "game",
+    moves: 0,
+    totalCarrots: 0,
+
+    weaponId: 1,
+    pocketId: 1,
+    superCarrotId: 1,
+    fences: 5,
+    glow: 0,
+
+    carrotHealing: 1,
+    fenceHp: 3,
+    maxHeldFences: 5,
+
+    gameOver: false,
+    currentMenu: 'game',
+
     board: Array(defaultNumTiles).fill(0).map(
         (_, i) => (
             i === 112 
