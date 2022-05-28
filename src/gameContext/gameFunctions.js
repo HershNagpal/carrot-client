@@ -1,6 +1,5 @@
-import { compareCoordinates, getEntityById, getEntityByType, getTileByEntityId, randomCarrotOfRiddlesText } from "./gameHelperFunctions";
+import { compareCoordinates, getEntityById, getEntityByType, getTileByCoordinates, getTileByEntityId, checkCoordsInBounds, randomCarrotOfRiddlesText } from "./gameHelperFunctions";
 import { action } from "@storybook/addon-actions";
-import { compareCoordinates, getEntityById, getEntityByType, getTileByEntityId, checkCoordsInBounds } from "./gameHelperFunctions";
 
 export const setCurrentMenu = (game, menu) => ({
     ...game,

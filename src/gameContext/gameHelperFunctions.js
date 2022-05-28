@@ -1,4 +1,4 @@
-import carrotOfRiddlesText from "./carrotOfRiddlesText";
+import { carrotOfRiddlesText } from "./carrotOfRiddlesText";
 import { defaultNumColumns, defaultNumRows } from "./defaultGameState";
 
 export const getTileByEntityId = (game, entityId) => (
