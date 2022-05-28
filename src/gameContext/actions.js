@@ -19,6 +19,26 @@ export const moveRight = () => ({
     parameters: {},
 });
 
+export const turnUp = () => ({
+    type: "turnUp",
+    parameters: {},
+});
+
+export const turnDown = () => ({
+    type: "turnDown",
+    parameters: {},
+});
+
+export const turnLeft = () => ({
+    type: "turnLeft",
+    parameters: {},
+});
+
+export const turnRight = () => ({
+    type: "turnRight",
+    parameters: {},
+});
+
 export const openInventory = () => ({
     type: "openInventory",
     parameters: {},
@@ -49,6 +69,10 @@ export const actionNameMap = {
     'moveDown': moveDown(),
     'moveLeft': moveLeft(),
     'moveRight': moveRight(),
+    'turnUp': turnUp(),
+    'turnDown': turnDown(),
+    'turnLeft': turnLeft(),
+    'turnRight': turnRight(),
     'openInventory': openInventory(),
     'closeMenu': closeMenu(),
     'attack': attack(),

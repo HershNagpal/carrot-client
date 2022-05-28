@@ -9,19 +9,29 @@ export const defaultGameState = {
             i === 112 
             ? {
                 terrain: "grass",
-                coordinates: {x: Math.floor(i/defaultNumColumns), y: i%defaultNumRows},
+                coordinates: {y: Math.floor(i/defaultNumColumns), x: i%defaultNumRows},
                 entityId: 1,
                 itemId: -1,
             }
             : {
                 terrain: "grass",
-                coordinates: {x: Math.floor(i/defaultNumColumns), y: i%defaultNumRows},
+                coordinates: {y: Math.floor(i/defaultNumColumns), x: i%defaultNumRows},
                 entityId: -1,
                 itemId: -1,
             }
         )
     ),
     entities: [
+        {
+            id: -1,
+            type: "error",
+            direction: "up",
+            maxHp: 0,
+            currentHp: 0,
+            currentLvl: 0,
+            currentXp: 0,
+            maxXp: 0,
+        },
         {
             id: 1,
             type: "player",
@@ -35,25 +45,29 @@ export const defaultGameState = {
     ],
     keyBindings: {
         'game': {
-            'w': 'moveUp',
-            'a': 'moveLeft',
-            's': 'moveDown',
-            'd': 'moveRight',
-            'i': 'openInventory',
-            'escape': 'closeMenu',
-            ' ': 'attack',
-            'c': 'consumeSuperCarrot',
-            'o': 'openCollection',
+            'w'         : 'moveUp',
+            'a'         : 'moveLeft',
+            's'         : 'moveDown',
+            'd'         : 'moveRight',
+            'i'         : 'openInventory',
+            'escape'    : 'closeMenu',
+            ' '         : 'attack',
+            'c'         : 'consumeSuperCarrot',
+            'o'         : 'openCollection',
+            'arrowup'   : 'turnUp',
+            'arrowdown' : 'turnDown',
+            'arrowleft' : 'turnLeft',
+            'arrowright': 'turnRight',
         },
         'inventory': {
-            'escape': 'closeMenu',
-            'o': 'openCollection',
-            'i': 'closeMenu',
+            'escape'    : 'closeMenu',
+            'o'         : 'openCollection',
+            'i'         : 'closeMenu',
         },
         'collection': {
-            'escape': 'closeMenu',
-            'o': 'closeMenu',
-            'i': 'openInventory',
+            'escape'    : 'closeMenu',
+            'o'         : 'closeMenu',
+            'i'         : 'openInventory',
         }
     },
 };

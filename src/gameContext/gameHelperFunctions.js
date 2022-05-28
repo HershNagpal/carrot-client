@@ -1,4 +1,5 @@
 import carrotOfRiddlesText from "./carrotOfRiddlesText";
+import { defaultNumColumns, defaultNumRows } from "./defaultGameState";
 
 export const getTileByEntityId = (game, entityId) => (
     game.board.find((tile) => (
@@ -30,4 +31,11 @@ export const compareCoordinates = (coordinates1, coordinates2) => (
 
 export const randomCarrotOfRiddlesText = () => (
     carrotOfRiddlesText[Math.floor(Math.random() * carrotOfRiddlesText.length)]
+)
+
+export const checkCoordsInBounds = (coordinates) => (
+    coordinates.x <= defaultNumColumns - 1 
+    && coordinates.x >= 0 
+    && coordinates.y <= defaultNumRows - 1 
+    && coordinates.y >= 0
 );

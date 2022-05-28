@@ -1,13 +1,28 @@
 import { compareCoordinates, getEntityById, getEntityByType, getTileByEntityId, randomCarrotOfRiddlesText } from "./gameHelperFunctions";
+import { action } from "@storybook/addon-actions";
+import { compareCoordinates, getEntityById, getEntityByType, getTileByEntityId, checkCoordsInBounds } from "./gameHelperFunctions";
 
 export const setCurrentMenu = (game, menu) => ({
     ...game,
     currentMenu: menu,
 });
 
-export const move = (game, entityId, direction) => {
-    const beginningTileCoordinates = getTileByEntityId(game, entityId)?.coordinates ?? false;
-    if (beginningTileCoordinates){}
+export const move = (game, entityId, action) => {
+    const movingEntity = getTileByEntityId(game, entityId);
+    const beginningTileCoordinates = movingEntity?.coordinates ?? false;
+    const newLocation = newCoordInDirection(beginningTileCoordinates, action.type);
+
+    if (beginningTileCoordinates && checkCoordsInBounds(newLocation)) {
+        /* Check if we are moving the player */
+        const rotatedPlayerGameState = entityId === 1
+            ? setEntityDirection(game, entityId, action.type.substring(4).toLowerCase())
+            : game;
+        return placeEntityOnBoard(
+            placeEntityOnBoard(rotatedPlayerGameState, -1, beginningTileCoordinates),
+            entityId, 
+            newLocation,
+        );
+    }
     return game;
 };
 
@@ -18,6 +33,23 @@ export const consumeSuperCarrot = (game) => (
         '-1': game,
     }[game.superCarrotId]
 );
+export const turnPlayer = (game, action) => (
+    setEntityDirection(game, 1, action.type.substring(4).toLowerCase())
+);
+
+const setEntityDirection = (game, entityId, direction) => ({
+    ...game, 
+    entities: [
+        ...game.entities.map(
+            (e) => e.id === entityId
+            ? {
+                ...e,
+                direction: direction,
+            }
+            : e
+        )
+    ]
+});
 
 export const attack = (game) => {
     console.log("You attacked!");
