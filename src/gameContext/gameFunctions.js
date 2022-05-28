@@ -28,10 +28,12 @@ export const move = (game, entityId, action) => {
 export const consumeSuperCarrot = (game) => (
     {
         1: carrotOfRiddles(),
+        0: game,
         undefined: game,
         '-1': game,
     }[game.superCarrotId]
 );
+
 export const turnPlayer = (game, action) => (
     setEntityDirection(game, 1, action.type.substring(4).toLowerCase())
 );
@@ -86,7 +88,6 @@ const spawnEntity = (game, entity, coordinates) => (
     )
 );
 
-
 export const newCoordInDirection = (coordinates, direction) => {
     const {x, y} = coordinates;
     switch (direction) {
@@ -102,7 +103,6 @@ export const newCoordInDirection = (coordinates, direction) => {
             throw new Error('Invalid Move Direction: ' + direction);
     }
 };
-
 
 export const setHp = (game, entityId, hp) => (
     game.entities.map((entity) => (
@@ -142,5 +142,8 @@ export const placeFence = (game, coordsToPlace) => {
 
 const carrotOfRiddles = (game) => {
     console.log(randomCarrotOfRiddlesText());
-    return game;
-}
+    return {
+        ...game,
+        superCarrotId: 0,
+    };
+};
