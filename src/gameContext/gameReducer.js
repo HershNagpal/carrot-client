@@ -1,7 +1,6 @@
 import { setCurrentMenu, move, consumeSuperCarrot, attack, turnPlayer, initializeGame } from './gameFunctions';
 
 export const reducer = (game, action) => {
-    console.log("Reducing: " + JSON.stringify(action));
     switch (action.type) {
         case 'initializeGame': 
             return initializeGame(game);

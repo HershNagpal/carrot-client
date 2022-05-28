@@ -86,7 +86,6 @@ export const validActionNames = [
 ];
 
 export const dispatchActionNameMap = (actionName, dispatch) => {
-    console.log("Action Map:" + actionName)
     switch (actionName) {
         case 'moveUp':
             dispatch(moveUp());

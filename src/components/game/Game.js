@@ -32,7 +32,7 @@ export const Game = ({}) => {
     const innerContext = React.useReducer(reducer, defaultGameState);
     const [gameContextState, dispatch] = innerContext;
     
-    const [keyPressed, _] = useKeyData();
+    const [keyPressed, setKeyPressed] = useKeyData();
 
     /*
     React.useEffect(() => {
@@ -43,6 +43,10 @@ export const Game = ({}) => {
     React.useEffect(() => {
         handleKeyPress(gameContextState, dispatch, keyPressed);
     }, [keyPressed]);
+
+    React.useEffect(() => {
+        setKeyPressed('');
+    }, [gameContextState]);
 
     return (
         <GameContext.Provider value={innerContext}>
