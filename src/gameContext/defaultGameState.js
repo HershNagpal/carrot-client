@@ -69,7 +69,7 @@ export const defaultGameState = {
             'W'         : 'turnUp',
             'A'         : 'turnLeft',
             'S'         : 'turnDown',
-            'D'         : 'turnwRight',
+            'D'         : 'turnRight',
             'i'         : 'openInventory',
             'escape'    : 'closeMenu',
             ' '         : 'attack',
