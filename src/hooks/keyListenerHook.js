@@ -1,17 +1,10 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useCallback } from 'react';
 
-export const useKeyData = () => {
-    const defaultKeyPressed = '';
-    const keyData = useState(defaultKeyPressed);
-    const setKeyPressed = keyData[1];
-
+export const useKeyPressCallback = (callBack, deps) => {
+    const cb = useCallback(callBack, deps);
     useEffect(() => {
-        const processKeyDown = (event) => {
-            setKeyPressed(event.key.toLowerCase());
-        }
+        document.addEventListener('keydown', cb);
 
-        document.addEventListener('keydown', processKeyDown);
-    }, [setKeyPressed]);
-
-    return keyData;
+        return () => document.removeEventListener('keydown', cb);
+    }, [cb]);
 };

@@ -4,9 +4,9 @@ import { reducer } from '../../gameContext/gameReducer';
 import { GameGrid } from '../gameGrid/GameGrid';
 import { InfoPanel } from '../infoPanel/InfoPanel';
 import { defaultGameState } from '../../gameContext/defaultGameState';
-import { handleKeyPress } from '../../gameContext/keyHandler';
-import { useKeyData } from '../../hooks/keyListenerHook';
+import { useKeyPressCallback } from '../../hooks/keyListenerHook';
 import { initializeGame } from '../../gameContext/gameFunctions';
+import { handleKeyPressAction } from '../../gameContext/actions';
 import React from 'react';
 
 const GridWrapper = styled.div`
@@ -25,14 +25,19 @@ const GameWrapper = styled.div`
         "sp1 grid infoPanel sp4"
         "sp1 sp5 sp6 sp4"
     ; 
-`;
+`; 
+
+export const handleKeyPress = (game, dispatch, keyPressed) => {
+    const keyAction = game?.keyBindings?.[game.currentMenu]?.[keyPressed] ?? "";
+    if(handleKeyPressAction(keyAction))
+        dispatch(
+            handleKeyPressAction(keyAction)
+        )
+};
 
 export const Game = ({}) => {
-    
     const innerContext = React.useReducer(reducer, defaultGameState);
     const [gameContextState, dispatch] = innerContext;
-    
-    const [keyPressed, setKeyPressed] = useKeyData();
 
     /*
     React.useEffect(() => {
@@ -40,13 +45,13 @@ export const Game = ({}) => {
     }, []);
     */
 
-    React.useEffect(() => {
-        handleKeyPress(gameContextState, dispatch, keyPressed);
-    }, [keyPressed]);
+    useKeyPressCallback((event) => {
+        handleKeyPress(gameContextState, dispatch, event.key);
+    },
+        [dispatch]
+    );
 
-    React.useEffect(() => {
-        setKeyPressed('');
-    }, [gameContextState]);
+
 
     return (
         <GameContext.Provider value={innerContext}>

@@ -1,7 +1,9 @@
-import { setCurrentMenu, move, consumeSuperCarrot, attack, turnPlayer, initializeGame } from './gameFunctions';
+import { setCurrentMenu, move, consumeSuperCarrot, attack, setEntityDirection, initializeGame, handleKeyPress } from './gameFunctions';
 
 export const reducer = (game, action) => {
     switch (action.type) {
+        case 'handleKeyPress': 
+            return handleKeyPress(game, action.parameters.keyAction);
         case 'initializeGame': 
             return initializeGame(game);
         case 'openInventory':
@@ -10,12 +12,12 @@ export const reducer = (game, action) => {
         case 'moveDown':
         case 'moveLeft':
         case 'moveRight':  
-            return move(game, 1, action);
+            return move(game, 1, action.type.substring(4).toLowerCase());
         case 'turnUp':
         case 'turnDown':
         case 'turnLeft':
         case 'turnRight':  
-            return turnPlayer(game, action);
+            return setEntityDirection(game, 1, action.type.substring(4).toLowerCase());
         case 'consumeSuperCarrot':
             return consumeSuperCarrot(game);
         case 'openMenu':
@@ -29,6 +31,6 @@ export const reducer = (game, action) => {
         case 'attack':
             return attack(game);  
         default:
-            throw new Error('Invalid Action Type: ' + action);
+            throw new Error('Invalid Action Type: ' + JSON.stringify(action));
     }
 }

@@ -1,8 +1,20 @@
+import { keyActionMap } from "./gameFunctions";
 
 export const initializeGame = () => ({
     type: "initializeGame",
     parameters: {},
 })
+
+export const handleKeyPressAction = (keyAction) => (
+    (Object.keys(keyActionMap).includes(keyAction))
+    ? {
+        type: "handleKeyPress",
+        parameters: {
+            keyAction: keyAction,
+        }
+    }
+    : null
+);
 
 export const moveUp = () => ({
     type: "moveUp",
@@ -68,65 +80,3 @@ export const openCollection = () => ({
     type: "openCollection",
     parameters: {},
 });
-
-export const validActionNames = [
-    'moveUp', 
-    'moveDown', 
-    'moveLeft', 
-    'moveRight', 
-    'turnUp', 
-    'turnDown', 
-    'turnLeft', 
-    'turnRight', 
-    'openInventory', 
-    'closeMenu', 
-    'attack', 
-    'consumeSuperCarrot', 
-    'openCollection', 
-];
-
-export const dispatchActionNameMap = (actionName, dispatch) => {
-    switch (actionName) {
-        case 'moveUp':
-            dispatch(moveUp());
-            break;
-        case 'moveDown':
-            dispatch(moveDown());
-            break;
-        case 'moveLeft': 
-            dispatch(moveLeft());
-            break;
-        case 'moveRight': 
-            dispatch(moveRight());
-            break;
-        case 'turnUp': 
-            dispatch(turnUp());
-            break;
-        case 'turnDown': 
-            dispatch(turnDown());
-            break;
-        case 'turnLeft': 
-            dispatch(turnLeft());
-            break;
-        case 'turnRight': 
-            dispatch(turnRight());
-            break;
-        case 'openInventory': 
-            dispatch(openInventory());
-            break;
-        case 'closeMenu': 
-            dispatch(closeMenu());
-            break;
-        case 'attack': 
-            dispatch(attack());
-            break;
-        case 'consumeSuperCarrot': 
-            dispatch(consumeSuperCarrot());
-            break;
-        case 'openCollection': 
-            dispatch(openCollection());
-            break;
-        default:
-            break;
-    }
-};
