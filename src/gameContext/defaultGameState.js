@@ -3,6 +3,8 @@ import { number } from "prop-types";
 export const defaultNumColumns = 15;
 export const defaultNumRows = 15;
 export const defaultNumTiles = defaultNumColumns * defaultNumRows;
+export const defaultWolfSpawnChance = 0.1;
+export const defaultCarrotSpawnChance = 0.1;
 
 export const defaultGameState = {
     moves: 0,

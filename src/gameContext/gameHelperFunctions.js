@@ -1,5 +1,5 @@
 import { carrotOfRiddlesText } from "./carrotOfRiddlesText";
-import { defaultNumColumns, defaultNumRows } from "./defaultGameState";
+import { defaultGameState, defaultNumColumns, defaultNumRows } from "./defaultGameState";
 
 export const getTileByEntityId = (game, entityId) => (
     game.board.find((tile) => (
@@ -39,3 +39,23 @@ export const checkCoordsInBounds = (coordinates) => (
     && coordinates.y <= defaultNumRows - 1 
     && coordinates.y >= 0
 );
+
+export const generateEntityId = (game) => {
+    const randomId = Math.floor(Math.random()*1E16)
+    return game.entities.find((entity)=>(entity.id === randomId))
+        ? generateEntityId(game)
+        : randomId
+};
+
+export const randomEmptyTileLocation = (game) => {
+    while (true) {
+        const x = Math.floor(Math.random() * defaultGameState.defaultNumColumns);
+        const y = Math.floor(Math.random() * defaultGameState.defaultNumRows);
+        const tile = getTileByCoordinates(game, {y: x, x: y});
+        console.log(tile)
+        if (tile.terrain === 'grass' && tile.entityId === -1) {
+            console.log('yee')
+            return { x: x, y: y };
+        }
+    }
+};

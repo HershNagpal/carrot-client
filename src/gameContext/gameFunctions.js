@@ -1,5 +1,9 @@
 import { action } from "@storybook/addon-actions";
-import { compareCoordinates, getEntityById, getEntityByType, getTileByCoordinates, getTileByEntityId, checkCoordsInBounds, randomCarrotOfRiddlesText } from "./gameHelperFunctions";
+import { compareCoordinates, getEntityById, getEntityByType, getTileByCoordinates, 
+    getTileByEntityId, checkCoordsInBounds, randomCarrotOfRiddlesText, 
+    generateEntityId, 
+    randomEmptyTileLocation} from "./gameHelperFunctions";
+import * as defaultGameState from "./defaultGameState";
 
 export const initializeGame = (game) => ({
 
@@ -56,6 +60,44 @@ export const consumeSuperCarrot = (game) => {
         default:
             return game;
     }
+};
+
+export const takeTurn = (game) => {
+    const carrot = (game) => spawnCarrot(game);
+    const wolf = (game) => spawnWolf(game);
+
+    const stateChanges = [carrot, wolf]
+    return stateChanges.reduce((a, stateChange) => (
+        stateChange(a)
+    ), game);
+};
+
+export const spawnWolf = (game) => {
+    if(Math.random() <= defaultGameState.defaultWolfSpawnChance) {
+        const wolf = {
+            id: generateEntityId(game),
+            currentHp: 3,
+            maxHp: 3,
+            type: 'wolf',
+        }
+        const wolfCoords = randomEmptyTileLocation(game);
+
+        return spawnEntity(game, wolf, wolfCoords);
+    }
+    return game;
+};
+
+export const spawnCarrot = (game) => {
+    if(Math.random() <= defaultGameState.defaultCarrotSpawnChance) {
+        const carrot = {
+            id: generateEntityId(game),
+            type: 'carrot',
+        }
+        const carrotCoords = randomEmptyTileLocation(game);
+
+        return spawnEntity(game, carrot, carrotCoords);
+    }
+    return game;
 };
 
 export const setEntityDirection = (game, entityId, direction) => ({
@@ -152,7 +194,7 @@ export const placeFence = (game, coordsToPlace) => {
             :   false
     };
     const fence = {
-        entityId: game.entities.length + 1,
+        entityId: generateEntityId(game),
         type: 'fence',
         maxHp: 3,
         currentHp: 3,
